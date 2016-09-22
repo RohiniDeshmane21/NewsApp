@@ -33,6 +33,15 @@ public class newsInfoAdapter extends ArrayAdapter<newsInfo> {
         TextView NewsType = (TextView) listitemView.findViewById(R.id.textViewType);
         NewsType.setText(currentNews.getTypeOfNews());
 
+       TextView contributor = (TextView)listitemView.findViewById(R.id.textViewContributer);
+        if(!currentNews.getContribute().equals(null))
+        {
+            contributor.setText(currentNews.getContribute());
+            contributor.setVisibility(View.VISIBLE);
+        }
+        else
+            contributor.setVisibility(View.GONE);
+
         final String webURL = currentNews.getWebURL();
 
 

@@ -23,10 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="10dp"
         android:text="Type"
         android:id="@+id/textViewType"
         android:layout_below="@+id/textViewNewsName"
         android:layout_alignLeft="@+id/textViewNewsName"
         android:layout_alignStart="@+id/textViewNewsName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="10dp"
+        android:text="contributor"
+        android:id="@+id/textViewContributer"
+        android:layout_below="@+id/textViewType"
+        android:layout_alignLeft="@+id/textViewType"
+        android:layout_alignStart="@+id/textViewType" />
 </RelativeLayout>

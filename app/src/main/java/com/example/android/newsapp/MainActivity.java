@@ -127,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
 
             int statusCode = urlConnection.getResponseCode();
             if (statusCode != HttpURLConnection.HTTP_ACCEPTED) {
-                // Log.d(TAG, "doInBackground(): connection failed: statusCode: " + statusCode);
-                //                    return null;
             }
 
             InputStream in = new BufferedInputStream(
@@ -171,28 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-
-       /* public HttpAsyncTaskLoader(final Context context) {
-            super(context);
-            onContentChanged();
-        }
-
-        @Override
-        public String loadInBackground() {
-
-            String enteredText = null;
-            try {
-                enteredText = URLEncoder.encode(searchString.getText().toString(), "utf-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            String url ="http://content.guardianapis.com/search?q="+enteredText+"&api-key=test";//https://www.googleapis.com/books/v1/volumes?q=" + enteredText + "&maxResults=10";
-
-            String result = GET(url);
-
-            return result;
-        }*/
+        String contributorName = "";
 
         @Override
         protected String doInBackground(String... urls) {
@@ -209,16 +186,13 @@ public class MainActivity extends AppCompatActivity {
                     String title = news.get("webTitle").toString();
                     String type = news.get("type").toString();
                     String webUrl = news.get("webUrl").toString();
-                   // JSONObject info = jsonObject.getJSONArray("items").getJSONObject(i).getJSONObject("volumeInfo");
-
-                   /* String bookName = info.get("title").toString();
-                    String author = info.getJSONArray("authors").get(0).toString();
-                    String publisher =  "Publisher : " + info.get("publisher").toString();
-                    String publishedDate = "Date : "+info.get("publishedDate").toString();
-                    String imageLink = info.getJSONObject("imageLinks").getString("thumbnail").toString();*/
-
-                    //newslist.add(new newsInfo(ne));
-                    newslist.add(new newsInfo(title,type,webUrl));
+                   
+                   
+                    if(type.equals("contributor"))
+                    {
+                        contributorName = news.get("firstName")+" "+news.get("lastName");
+                    }
+                    newslist.add(new newsInfo(title,type,webUrl,contributorName));
 
                 }
 
