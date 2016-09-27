@@ -7,7 +7,7 @@ public class newsInfo {
     private String NewsTitle;
     private String typeOfNews;
     private String webURL;
-   private String contribute;
+    private String contribute;
 
     public newsInfo(String newsTitile, String type,String web,String Contributor)
     {
@@ -15,10 +15,9 @@ public class newsInfo {
         typeOfNews = type;
         webURL = web;
         contribute = Contributor;
-
     }
 
-  public String getContribute() {
+    public String getContribute() {
         return contribute;
     }
 

@@ -22,28 +22,29 @@ public class newsInfoAdapter extends ArrayAdapter<newsInfo> {
         View listitemView = convertView;
 
         if (listitemView == null)
-
         {
             listitemView = LayoutInflater.from(getContext()).inflate(R.layout.news_info, parent, false);
         }
 
-        TextView NewsTitle = (TextView) listitemView.findViewById(R.id.textViewNewsName);
-        NewsTitle.setText(currentNews.getNewsTitle());
+        ViewHolder holder = new ViewHolder();
 
-        TextView NewsType = (TextView) listitemView.findViewById(R.id.textViewType);
-        NewsType.setText(currentNews.getTypeOfNews());
+        holder.NewsTitle = (TextView) listitemView.findViewById(R.id.textViewNewsName);
+        holder.NewsType = (TextView) listitemView.findViewById(R.id.textViewType);
+        holder.contributor = (TextView)listitemView.findViewById(R.id.textViewContributer);
+        listitemView.setTag(holder);
 
-       TextView contributor = (TextView)listitemView.findViewById(R.id.textViewContributer);
+        holder.NewsTitle.setText(currentNews.getNewsTitle());
+        holder.NewsType.setText(currentNews.getTypeOfNews());
+
         if(!currentNews.getContribute().equals(null))
         {
-            contributor.setText(currentNews.getContribute());
-            contributor.setVisibility(View.VISIBLE);
+            holder.contributor.setText(currentNews.getContribute());
+            holder.contributor.setVisibility(View.VISIBLE);
         }
         else
-            contributor.setVisibility(View.GONE);
+            holder.contributor.setVisibility(View.GONE);
 
         final String webURL = currentNews.getWebURL();
-
 
         listitemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +55,10 @@ public class newsInfoAdapter extends ArrayAdapter<newsInfo> {
         });
 
         return listitemView;
-
-
     }
+
     public newsInfoAdapter(Activity context, ArrayList<newsInfo> bookList)
     {
         super(context,0,bookList);
-
     }
 }
