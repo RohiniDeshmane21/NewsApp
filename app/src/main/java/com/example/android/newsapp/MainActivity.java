@@ -73,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
         final String enteredText = "";
 
+        if(savedInstanceState != null)
+        {
+            msg.setVisibility(View.VISIBLE);
+            newslist = (ArrayList<newsInfo>)savedInstanceState.getSerializable("Old");
+            showData(newslist);
+        }
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +99,27 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        //savedInstanceState.putParcelableArrayList("newsInfo", (ArrayList<? extends Parcelable>) newslist);
+       // ArrayList<newsInfo> news = new ArrayList<newsInfo>();
+        savedInstanceState.putSerializable("Old", newslist);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+       newslist = (ArrayList<newsInfo>) savedInstanceState.get("Old");
     }
 
     public void showData(ArrayList<newsInfo> newsInfo)

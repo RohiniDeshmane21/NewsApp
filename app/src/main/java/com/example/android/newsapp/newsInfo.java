@@ -1,9 +1,11 @@
 package com.example.android.newsapp;
 
+import java.io.Serializable;
+
 /**
  * Created by Rupali on 21-09-2016.
  */
-public class newsInfo {
+public class newsInfo implements Serializable {
     private String NewsTitle;
     private String typeOfNews;
     private String webURL;
@@ -16,6 +18,11 @@ public class newsInfo {
         webURL = web;
         contribute = Contributor;
     }
+
+    public newsInfo() {
+
+    }
+
 
     public String getContribute() {
         return contribute;
