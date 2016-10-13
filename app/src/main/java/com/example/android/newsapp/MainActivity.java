@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 progress.setProgress(0);
                 msg.setVisibility(View.GONE);
 
+                newslist.clear();
+
                 String enteredText = null;
                 try {
                     enteredText = URLEncoder.encode(searchString.getText().toString(), "utf-8");
